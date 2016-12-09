@@ -1,14 +1,25 @@
-/* =================================================================== */
-/*
-/*  Advent v1.0 Base Stylesheet
-/*  url: styleshout.com
-/*  08-28-2015
-/*
-/* =================================================================== */
+/**
+ * =================================================================== 
+ *
+ *  Kards v1.0 Base Stylesheet
+ *  url: styleshout.com
+ *  03-01-2016
+ *  ------------------------------------------------------------------
+ *  TOC:
+ *  01. reset
+ *  02. basic/base setup styles
+ *  03. grid
+ *  04. MISC
+ *
+ * =================================================================== 
+ */
 
-/* 
-/* Reset - normalize.css v3.0.1 | MIT License | git.io/normalize 
-/* =================================================================== */
+/** 
+ * ===================================================================
+ * 01. reset - normalize.css v3.0.2 | MIT License | git.io/normalize
+ *
+ * ------------------------------------------------------------------- 
+ */
 html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
@@ -28,6 +39,7 @@ footer,
 header,
 hgroup,
 main,
+menu,
 nav,
 section,
 summary {
@@ -228,30 +240,20 @@ th {
 	padding: 0;
 }
 
-/*
-/* Basic Setup Styles - Top Elements 
-/* =================================================================== */
-
-/* NOTE
-html is set to 62.5% so that if you use REMS, all the measurements 
-are based on 10px sizing. So basically 1.5rem = 15px  */
+/** 
+ * ===================================================================
+ * 02. basic/base setup styles - (_basic.scss)
+ *
+ * ------------------------------------------------------------------- 
+ */
 html {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-size: 62.5%;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-html,
-body {
-	height: 100%;
-}
-
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	box-sizing: inherit;
 }
 
@@ -259,11 +261,32 @@ body {
 	font-weight: normal;
 	line-height: 1;
 	text-rendering: optimizeLegibility;
+	word-wrap: break-word;
+	-webkit-overflow-scrolling: touch;
+	-webkit-text-size-adjust: none;
 }
 
-/*
-/* Typography 
-====================================================================== */
+body,
+input,
+button {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Media - (_basic.scss)
+ * ------------------------------------------------------------------- 
+ */
+img,
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+/**
+ * Typography resets - (_basic.scss)
+ * ------------------------------------------------------------------- 
+ */
 div,
 dl,
 dt,
@@ -293,16 +316,10 @@ h3,
 h4,
 h5,
 h6 {
+	-webkit-font-variant-ligatures: common-ligatures;
+	-moz-font-variant-ligatures: common-ligatures;
+	font-variant-ligatures: common-ligatures;
 	text-rendering: optimizeLegibility;
-	line-height: 1.2;
-}
-
-hr {
-	border: solid #ddd;
-	border-width: 1px 0 0;
-	clear: both;
-	margin: 11px 0 24px;
-	height: 0;
 }
 
 em,
@@ -322,46 +339,19 @@ small {
 	line-height: inherit;
 }
 
+ol,
 ul {
 	list-style: none;
 }
 
-ol {
-	list-style: decimal;
+li {
+	display: block;
 }
 
-ol,
-ul.square,
-ul.circle,
-ul.disc {
-	margin-left: 17px;
-}
-
-ul.square {
-	list-style: square;
-}
-
-ul.circle {
-	list-style: circle;
-}
-
-ul.disc {
-	list-style: disc;
-}
-
-ul li {
-	padding-left: 4px;
-}
-
-ul ul,
-ul ol,
-ol ol,
-ol ul {
-	margin: 3px 0 3px 17px;
-}
-
-/* links
----------------------------------------------------------------------- */
+/**
+ * links - (_basic.scss)
+ * ------------------------------------------------------------------- 
+ */
 a {
 	text-decoration: none;
 	line-height: inherit;
@@ -371,57 +361,40 @@ a img {
 	border: none;
 }
 
-a:focus {
-	outline: none;
+/**
+ * inputs - (_basic.scss)
+ * ------------------------------------------------------------------- 
+ */
+fieldset {
+	margin: 0;
+	padding: 0;
 }
 
-p a,
-p a:visited {
-	line-height: inherit;
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
 }
 
-/* 
-/* Media 
-/* =================================================================== */
-img,
-video,
-embed,
-object {
-	max-width: 100%;
-	height: auto;
-}
-
-object,
-embed {
-	height: 100%;
-}
-
-img {
-	-ms-interpolation-mode: bicubic;
-}
-
-/* 
-/* Grid
-===================================================================== */
+/** 
+ * ===================================================================
+ * 03. grid - (_grid.scss)
+ *
+ * ------------------------------------------------------------------- 
+ */
 .row {
 	width: 94%;
-	max-width: 1024px;
+	max-width: 1140px;
 	margin: 0 auto;
-}
-
-.ie8 .row {
-	width: 1024px;
-}
-
-.narrow .row {
-	max-width: 980px;
-}
-
-.row .row {
-	width: auto;
-	max-width: none;
-	margin-left: -18px;
-	margin-right: -18px;
 }
 
 .row:before,
@@ -434,97 +407,102 @@ img {
 	clear: both;
 }
 
-.column,
-.columns,
+.row .row {
+	width: auto;
+	max-width: none;
+	margin-left: -20px;
+	margin-right: -20px;
+}
+
+[class*="col-"],
 .bgrid {
-	position: relative;
-	padding: 0 18px;
-	min-height: 1px;
 	float: left;
 }
 
-.column.centered,
-.columns.centered {
-	float: none;
-	margin: 0 auto;
-}
-
-.row.collapsed > .column,
-.row.collapsed > .columns,
-.column.collapsed,
-.columns.collapsed {
-	padding: 0;
-}
-
-[class*="column"] + [class*="column"]:last-child {
+[class*="col-"] + [class*="col-"].end {
 	float: right;
 }
 
-[class*="column"] + [class*="column"].end {
-	float: right;
+[class*="col-"] {
+	padding: 0 20px;
 }
 
-.one,
-.row .one {
+.col-one {
 	width: 8.33333%;
 }
 
-.two,
-.row .two {
+.col-two,
+.col-1-6 {
 	width: 16.66667%;
 }
 
-.three,
-.row .three {
+.col-three,
+.col-1-4 {
 	width: 25%;
 }
 
-.four,
-.row .four {
+.col-four,
+.col-1-3 {
 	width: 33.33333%;
 }
 
-.five,
-.row .five {
+.col-five {
 	width: 41.66667%;
 }
 
-.six,
-.row .six {
+.col-six,
+.col-1-2 {
 	width: 50%;
 }
 
-.seven,
-.row .seven {
+.col-seven {
 	width: 58.33333%;
 }
 
-.eight,
-.row .eight {
+.col-eight,
+.col-2-3 {
 	width: 66.66667%;
 }
 
-.nine,
-.row .nine {
+.col-nine,
+.col-3-4 {
 	width: 75%;
 }
 
-.ten .row .ten {
+.col-ten,
+.col-5-6 {
 	width: 83.33333%;
 }
 
-.eleven,
-.row .eleven {
+.col-eleven {
 	width: 91.66667%;
 }
 
-.twelve,
-.row .twelve {
+.col-twelve,
+.col-full {
 	width: 100%;
 }
 
-/* tablets
---------------------------------------------------------------- */
+/**
+ * small screens - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
+@media screen and (max-width:1024px) {
+	.row .row {
+		margin-left: -18px;
+		margin-right: -18px;
+	}
+
+	[class*="col-"] {
+		padding: 0 18px;
+	}
+
+}
+
+/**
+ * tablets - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
 @media screen and (max-width:768px) {
 	.row {
 		width: auto;
@@ -539,45 +517,40 @@ img {
 		margin-right: -15px;
 	}
 
-	.column,
-	.columns {
+	[class*="col-"] {
 		padding: 0 15px;
 	}
 
-	.tab-fourth,
-	.row .tab-fourth {
+	.tab-1-4 {
 		width: 25%;
 	}
 
-	.tab-third,
-	.row .tab-third {
+	.tab-1-3 {
 		width: 33.33333%;
 	}
 
-	.tab-half,
-	.row .tab-half {
+	.tab-1-2 {
 		width: 50%;
 	}
 
-	.tab-2thirds,
-	.row .tab-2thirds {
+	.tab-2-3 {
 		width: 66.66667%;
 	}
 
-	.tab-3fourths,
-	.row .tab-3fourths {
+	.tab-3-4 {
 		width: 75%;
 	}
 
-	.tab-whole,
-	.row .tab-whole {
+	.tab-full {
 		width: 100%;
 	}
 
 }
 
-/* mobile
---------------------------------------------------------------- */
+/**
+ * large mobile devices - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
 @media screen and (max-width:600px) {
 	.row {
 		padding-left: 25px;
@@ -589,41 +562,33 @@ img {
 		margin-right: -10px;
 	}
 
-	.column,
-	.columns {
+	[class*="col-"] {
 		padding: 0 10px;
 	}
 
-	.mob-fourth,
-	.row .mob-fourth {
+	.mob-1-4 {
 		width: 25%;
 	}
 
-	.mob-half,
-	.row .mob-half {
+	.mob-1-2 {
 		width: 50%;
 	}
 
-	.mob-3fourths,
-	.row .mob-3fourths {
+	.mob-3-4 {
 		width: 75%;
 	}
 
-	.mob-whole,
-	.row .mob-whole {
+	.mob-full {
 		width: 100%;
 	}
 
 }
 
-/* small mobile devices
---------------------------------------------------------------- */
+/**
+ * small mobile devices - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
 @media screen and (max-width:400px) {
-	.row {
-		padding-left: 30px;
-		padding-right: 30px;
-	}
-
 	.row .row {
 		padding-left: 0;
 		padding-right: 0;
@@ -631,204 +596,206 @@ img {
 		margin-right: 0;
 	}
 
-	.column,
-	.columns {
-		width: auto !important;
+	[class*="col-"] {
+		width: 100% !important;
 		float: none !important;
+		clear: both !important;
 		margin-left: 0;
 		margin-right: 0;
-		clear: both;
 		padding: 0;
 	}
 
-	[class*="column"] + [class*="column"]:last-child {
+	[class*="col-"] + [class*="col-"].end {
 		float: none;
 	}
 
 }
 
-/* larger screens
---------------------------------------------------------------- */
-@media screen and (min-width:1200px) {
-	.wide .wrap {
-		max-width: 1180px;
-	}
-
+/** 
+ * ===================================================================
+ * block grids - (_grid.scss)
+ *
+ * ------------------------------------------------------------------- 
+ */
+[class*="block-"]:before,
+[class*="block-"]:after {
+	content: "";
+	display: table;
 }
 
-/* 
-/* block grids
-===================================================================== */
-.bgrid-sixth .bgrid {
+[class*="block-"]:after {
+	clear: both;
+}
+
+.block-1-6 .bgrid {
 	width: 16.66667%;
 }
 
-.bgrid-fourth .bgrid {
+.block-1-4 .bgrid {
 	width: 25%;
 }
 
-.bgrid-third .bgrid {
+.block-1-3 .bgrid {
 	width: 33.33333%;
 }
 
-.bgrid-half .bgrid {
+.block-1-2 .bgrid {
 	width: 50%;
 }
 
-.bgrid {
-	padding: 0;
-}
-
-/* Clearing for block grid columns. Allows columns with 
-different heights to align properly.
---------------------------------------------------------------------- */
-.first {
+/**
+ * Clearing for block grid columns. Allow columns with 
+ * different heights to align properly.
+ */
+.block-1-6 .bgrid:nth-child(6n+1),
+.block-1-4 .bgrid:nth-child(4n+1),
+.block-1-3 .bgrid:nth-child(3n+1),
+.block-1-2 .bgrid:nth-child(2n+1) {
 	clear: both;
 }
 
-/* first column in large(default) screen - for IE8 */
-.bgrid-sixth .bgrid:nth-child(6n+1),
-.bgrid-fourth .bgrid:nth-child(4n+1),
-.bgrid-third .bgrid:nth-child(3n+1),
-.bgrid-half .bgrid:nth-child(2n+1) {
-	clear: both;
-}
-
-/* smaller screens
---------------------------------------------------------------- */
-@media screen and (max-width:900px) {
-
-	/* block grids for small screens */
-	.s-bgrid-sixth .bgrid {
+/**
+ * small screens - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
+@media screen and (max-width:1024px) {
+	.block-s-1-6 .bgrid {
 		width: 16.66667%;
 	}
 
-	.s-bgrid-fourth .bgrid {
+	.block-s-1-4 .bgrid {
 		width: 25%;
 	}
 
-	.s-bgrid-third .bgrid {
+	.block-s-1-3 .bgrid {
 		width: 33.33333%;
 	}
 
-	.s-bgrid-half .bgrid {
+	.block-s-1-2 .bgrid {
 		width: 50%;
 	}
 
-	.s-bgrid-whole .bgrid {
+	.block-s-full .bgrid {
 		width: 100%;
 		clear: both;
 	}
 
-	.first,
-	[class*="bgrid-"] .bgrid:nth-child(n) {
+	[class*="block-s-"] .bgrid:nth-child(n) {
 		clear: none;
 	}
 
-	.s-bgrid-sixth .bgrid:nth-child(6n+1),
-	.s-bgrid-fourth .bgrid:nth-child(4n+1),
-	.s-bgrid-third .bgrid:nth-child(3n+1),
-	.s-bgrid-half .bgrid:nth-child(2n+1) {
+	.block-s-1-6 .bgrid:nth-child(6n+1),
+	.block-s-1-4 .bgrid:nth-child(4n+1),
+	.block-s-1-3 .bgrid:nth-child(3n+1),
+	.block-s-1-2 .bgrid:nth-child(2n+1) {
 		clear: both;
 	}
 
 }
 
-/* tablets
---------------------------------------------------------------- */
+/**
+ * tablets - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
 @media screen and (max-width:768px) {
-	.tab-bgrid-sixth .bgrid {
+	.block-tab-1-6 .bgrid {
 		width: 16.66667%;
 	}
 
-	.tab-bgrid-fourth .bgrid {
+	.block-tab-1-4 .bgrid {
 		width: 25%;
 	}
 
-	.tab-bgrid-third .bgrid {
+	.block-tab-1-3 .bgrid {
 		width: 33.33333%;
 	}
 
-	.tab-bgrid-half .bgrid {
+	.block-tab-1-2 .bgrid {
 		width: 50%;
 	}
 
-	.tab-bgrid-whole .bgrid {
+	.block-tab-full .bgrid {
 		width: 100%;
 		clear: both;
 	}
 
-	.first,
-	[class*="tab-bgrid-"] .bgrid:nth-child(n) {
+	[class*="block-tab-"] .bgrid:nth-child(n) {
 		clear: none;
 	}
 
-	.tab-bgrid-sixth .bgrid:nth-child(6n+1),
-	.tab-bgrid-fourth .bgrid:nth-child(4n+1),
-	.tab-bgrid-third .bgrid:nth-child(3n+1),
-	.tab-bgrid-half .bgrid:nth-child(2n+1) {
+	.block-tab-1-6 .bgrid:nth-child(6n+1),
+	.block-tab-1-4 .bgrid:nth-child(4n+1),
+	.block-tab-1-3 .bgrid:nth-child(3n+1),
+	.block-tab-1-2 .bgrid:nth-child(2n+1) {
 		clear: both;
 	}
 
 }
 
-/* mobile devices
---------------------------------------------------------------- */
+/**
+ * large mobile devices - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
 @media screen and (max-width:600px) {
-	.mob-bgrid-sixth .bgrid {
+	.block-mob-1-6 .bgrid {
 		width: 16.66667%;
 	}
 
-	.mob-bgrid-fourth .bgrid {
+	.block-mob-1-4 .bgrid {
 		width: 25%;
 	}
 
-	.mob-bgrid-third .bgrid {
+	.block-mob-1-3 .bgrid {
 		width: 33.33333%;
 	}
 
-	.mob-bgrid-half .bgrid {
+	.block-mob-1-2 .bgrid {
 		width: 50%;
 	}
 
-	.mob-bgrid-whole .bgrid {
+	.block-mob-full .bgrid {
 		width: 100%;
 		clear: both;
 	}
 
-	.first,
-	[class*="mob-bgrid-"] .bgrid:nth-child(n) {
+	[class*="block-mob-"] .bgrid:nth-child(n) {
 		clear: none;
 	}
 
-	.mob-bgrid-sixth .bgrid:nth-child(6n+1),
-	.mob-bgrid-fourth .bgrid:nth-child(4n+1),
-	.mob-bgrid-third .bgrid:nth-child(3n+1),
-	.mob-bgrid-half .bgrid:nth-child(2n+1) {
+	.block-mob-1-6 .bgrid:nth-child(6n+1),
+	.block-mob-1-4 .bgrid:nth-child(4n+1),
+	.block-mob-1-3 .bgrid:nth-child(3n+1),
+	.block-mob-1-2 .bgrid:nth-child(2n+1) {
 		clear: both;
 	}
 
 }
 
-/* stack on small mobile devices
---------------------------------------------------------------- */
+/**
+ * stack on small mobile devices - (_grid.scss)
+ * --------------------------------------------------------------- 
+ */
 @media screen and (max-width:400px) {
 	.stack .bgrid {
-		width: auto !important;
+		width: 100% !important;
 		float: none !important;
+		clear: both !important;
 		margin-left: 0;
 		margin-right: 0;
-		clear: both;
 	}
 
 }
 
-/* 
-/* MISC
-===================================================================== */
+/** 
+ * ===================================================================
+ * 04. MISC  - (_grid.scss)
+ *
+ * ------------------------------------------------------------------- 
+ */
 
-/* Clearing - (http://nicolasgallagher.com/micro-clearfix-hack/
---------------------------------------------------------------------- */
+/**
+ * Clearing - (http://nicolasgallagher.com/micro-clearfix-hack/
+ */
 .group:before,
 .group:after {
 	content: "";
@@ -839,8 +806,9 @@ different heights to align properly.
 	clear: both;
 }
 
-/* Misc Helper Styles 
---------------------------------------------------------------------- */
+/**
+ * Misc Helper Styles 
+ */
 .hide {
 	display: none;
 }
@@ -859,15 +827,19 @@ different heights to align properly.
 }
 
 .half-bottom {
-	margin-bottom: 15px !important;
+	margin-bottom: 1.5rem !important;
 }
 
 .add-bottom {
-	margin-bottom: 30px !important;
+	margin-bottom: 3rem !important;
 }
 
 .no-border {
 	border: none;
+}
+
+.full-width {
+	width: 100%;
 }
 
 .text-center {
@@ -896,3 +868,4 @@ different heights to align properly.
 	text-align: center;
 }
 
+/*# sourceMappingURL=base.css.map */
