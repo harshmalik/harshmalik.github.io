@@ -1,0 +1,22 @@
+This zip file contains optimized resources for http://harshmalik.github.io/. The optimized resources are listed below in the format of: 
+filename: url
+
+Note: We only include up to 10 MB of optimized contents. If the
+optimized contents of your page are larger than 10 MB, we list them in
+this file too, with 'NOT INCLUDED' to indicate those URLs require
+further optimization.
+
+js/main.js: https://harshmalik.github.io/js/main.js
+image/logo.png: https://harshmalik.github.io/images/logo.png
+image/intro-bg.jpg: https://harshmalik.github.io/images/intro-bg.jpg
+image/profile-pic.jpg: https://harshmalik.github.io/images/profile-pic.jpg
+image/liberty.jpg: https://harshmalik.github.io/images/portfolio/liberty.jpg
+image/shutterbug.jpg: https://harshmalik.github.io/images/portfolio/shutterbug.jpg
+image/clouds.jpg: https://harshmalik.github.io/images/portfolio/clouds.jpg
+image/beetle.jpg: https://harshmalik.github.io/images/portfolio/beetle.jpg
+image/lighthouse.jpg: https://harshmalik.github.io/images/portfolio/lighthouse.jpg
+image/m-liberty.jpg: https://harshmalik.github.io/images/portfolio/modals/m-liberty.jpg
+image/m-shutterbug.jpg: https://harshmalik.github.io/images/portfolio/modals/m-shutterbug.jpg
+image/m-clouds.jpg: https://harshmalik.github.io/images/portfolio/modals/m-clouds.jpg
+image/m-beetle.jpg: https://harshmalik.github.io/images/portfolio/modals/m-beetle.jpg
+image/m-lighthouse.jpg: https://harshmalik.github.io/images/portfolio/modals/m-lighthouse.jpg
